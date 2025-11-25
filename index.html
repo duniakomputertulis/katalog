@@ -93,7 +93,7 @@ Note: If you host this on a webserver, you can later point image URLs to your se
     <div class="container">
       <div class="topbar">
         <div class="brand">
-          <img src="logoDK.png" alt="logo" style="height:48px;border-radius:6px;object-fit:cover;margin-right:8px">
+          <img src="/mnt/data/Screenshot 2025-11-25 233342.png" alt="logo" style="height:48px;border-radius:6px;object-fit:cover;margin-right:8px">
           <div>
             <h1>DuniaKomputerTulis.id</h1>
             <div style="font-size:12px;color:#ddd">Laptop & Desktop — Katalog Online</div>
@@ -108,19 +108,8 @@ Note: If you host this on a webserver, you can later point image URLs to your se
       <div class="hero">
         <div class="left hero-card">
           <h2>Promo & Katalog Terbaru</h2>
-          <p>Promo Tahun Baru 2026 (contoh) — perlihatkan produk unggulan dan kategori brand di bawah.</p>
+          <p>Promo Tahun Baru 2026 — perlihatkan produk unggulan dan kategori brand di bawah.</p>
           <div style="margin-top:12px;display:flex;gap:10px;flex-wrap:wrap">
-      </div>   
-    <div class="right">
-          <img src="/mnt/data/Screenshot 2025-11-25 233405.png" alt="hero" style="width:100%;border-radius:12px;object-fit:cover">
-      </div>
-    </div>
-  </div>
-</header>
-
-  <main class="container">
-       <div classs="nav-brands" id="brandNav">
-          <div class="brand-chips" style="margin-top:12px;display:flex;gap:10px;flex-wrap:wrap">
             <div class="brand-chip active" data-brand="all">Semua Brand</div>
             <div class="brand-chip" data-brand="MSI">ASUS</div>
             <div class="brand-chip" data-brand="MSI">Lenovo</div>
@@ -132,6 +121,27 @@ Note: If you host this on a webserver, you can later point image URLs to your se
             <div class="brand-chip" data-brand="MSI">ZYREX</div>
             <div class="brand-chip" data-brand="MSI">AXIO</div>
           </div>
+        </div>
+        <div class="right">
+          <img src="/mnt/data/Screenshot 2025-11-25 233405.png" alt="hero" style="width:100%;border-radius:12px;object-fit:cover">
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="nav-brands" id="brandNav">
+        <div class="brand-chip active" data-brand="all">Semua Brand</div>
+            <div class="brand-chip" data-brand="MSI">ASUS</div>
+            <div class="brand-chip" data-brand="MSI">Lenovo</div>
+            <div class="brand-chip" data-brand="MSI">Apple</div>
+            <div class="brand-chip" data-brand="ASUS">MSI</div>
+            <div class="brand-chip" data-brand="Lenovo">DEEL</div>
+            <div class="brand-chip" data-brand="Acer">Acer</div>
+            <div class="brand-chip" data-brand="MSI">HP</div>
+            <div class="brand-chip" data-brand="MSI">ZYREX</div>
+            <div class="brand-chip" data-brand="MSI">AXIO</div>
+    </div>
     <div class="layout">
       <aside>
         <div class="aside-section">
@@ -171,7 +181,7 @@ Note: If you host this on a webserver, you can later point image URLs to your se
     </div>
 
     <footer>
-      <div>© <span id="year"></span> DuniaKomputerTulis.id — Katalog PC-Laptop-Wifi-CCTV terbaru 2026</div>
+      <div>© <span id="year"></span> DuniaKomputerTulis.id — Katalog & Penjualan Online</div>
     </footer>
   </main>
 
@@ -271,8 +281,9 @@ Note: If you host this on a webserver, you can later point image URLs to your se
     // sample starter products (will only be set if localStorage empty)
     const SAMPLE = [
       {id:1,brand:'MSI',name:'MSI Thin 15 A12',price:14990000,stock:5,image:'/mnt/data/Screenshot 2025-11-25 233342.png',short:'Laptop gaming tipis, RTX onboard',specs:'CPU: Intel i7\nRAM: 16GB\nStorage: 1TB SSD\nDisplay: 15.6" 144Hz'},
-      {id:2,brand:'ASUS',name:'ASUS ROG-STRIX-G-G815-2',price:38800000,stock:8,image:'ROG-STRIX-G-G815-2.png',short:'Ringan & stylish',specs:'CPU: Intel Core Ultra 9 275HX\nRAM: 32GB\nStorage: 1000GB SSD\nVGA: RTX 5060\nDisplay: 18" WUXGA'},
-      {id:3,brand:'Lenovo',name:'Lenovo Legion 5',price:18990000,stock:3,image:'https://via.placeholder.com/600x400?text=Lenovo+Legion',short:'Performa gaming terbaik',specs:'CPU: Ryzen 9\nGPU: RTX 4070\nRAM: 32GB\nStorage: 1TB'}
+      {id:2,brand:'ASUS',name:'ASUS Zenbook X',price:12990000,stock:8,image:'https://via.placeholder.com/600x400?text=ASUS+Zenbook',short:'Ringan & stylish',specs:'CPU: AMD Ryzen 7\nRAM: 16GB\nStorage: 512GB SSD\nDisplay: 14" OLED'},
+      {id:3,brand:'ASUS',name:'ASUS ROG-STRIX-G-G815-2',price:38800000,stock:8,image:'ROG-STRIX-G-G815-2.png',short:'Ringan & stylish',specs:'CPU: Intel Core Ultra 9 275HX\nRAM: 32GB\nStorage: 1000GB SSD\nVGA: RTX 5060\nDisplay: 18" WUXGA'},
+      {id:4,brand:'Lenovo',name:'Lenovo Legion 5',price:18990000,stock:3,image:'https://via.placeholder.com/600x400?text=Lenovo+Legion',short:'Performa gaming terbaik',specs:'CPU: Ryzen 9\nGPU: RTX 4070\nRAM: 32GB\nStorage: 1TB'}
     ];
 
     // persistence
