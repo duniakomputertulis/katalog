@@ -1,0 +1,397 @@
+<html lang="id"><head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Dunia Komputer Tulis - Demo</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&amp;display=swap" rel="stylesheet">
+  <style>
+    :root{--bg:#0f0f10;--card:#111216;--accent:#cda14b;--muted:#bdbdbd;--glass: rgba(255,255,255,0.03)}
+    *{box-sizing:border-box;font-family:Inter,system-ui,Arial,sans-serif}
+    body{margin:0;background:linear-gradient(180deg,#070707 0%, #0f0f10 70%);color:#eee}
+    header{background:linear-gradient(90deg, rgba(0,0,0,0.6), rgba(0,0,0,0.2)), url('/mnt/data/Screenshot 2025-11-25 233321.png') center/cover no-repeat; padding:36px 20px}
+    .container{max-width:1200px;margin:0 auto}
+    .topbar{display:flex;align-items:center;justify-content:space-between}
+    .brand{display:flex;gap:12px;align-items:center}
+    .brand h1{margin:0;font-size:22px;letter-spacing:1px}
+    .search-wrap{display:flex;gap:8px;align-items:center}
+    input.search{padding:10px 12px;border-radius:8px;border:0;background:var(--glass);color:#fff;min-width:220px}
+
+    .hero{display:flex;gap:20px;align-items:center;margin-top:18px}
+    .hero .left{flex:1}
+    .hero .right{width:420px}
+    .hero-card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:18px;border-radius:12px;box-shadow:0 6px 20px rgba(0,0,0,0.6)}
+    .hero h2{margin:0 0 8px 0;font-size:28px;color:var(--accent)}
+    .hero p{margin:0;color:var(--muted)}
+
+    main{background:#fff;color:#111;border-top-left-radius:18px;border-top-right-radius:18px;margin-top:22px;padding:28px}
+    .nav-brands{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px}
+    .brand-chip{padding:8px 14px;border-radius:999px;background:#f3f3f3;color:#333;cursor:pointer;border:1px solid #e6e6e6}
+    .brand-chip.active{background:var(--accent);color:#111;font-weight:700}
+
+    .layout{display:grid;grid-template-columns:260px 1fr;gap:24px}
+    aside{padding:16px;background:#fafafa;border-radius:10px}
+    .aside-section{margin-bottom:12px}
+    .aside-section h4{margin:0 0 8px 0}
+    .filter-item{display:flex;align-items:center;justify-content:space-between;padding:8px;border-radius:8px;background:#fff;margin-bottom:8px}
+
+    .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:18px}
+    .card{background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 4px 18px rgba(0,0,0,0.06);display:flex;flex-direction:column}
+    .card img{width:100%;height:150px;object-fit:cover}
+    .card-body{padding:12px;flex:1;display:flex;flex-direction:column}
+    .title{font-weight:700;margin:0 0 6px 0}
+    .price{color:var(--accent);font-weight:700;margin-bottom:8px}
+    .specs{font-size:13px;color:#666;flex:1}
+    .btn{display:inline-block;padding:8px 10px;border-radius:8px;background:var(--accent);color:#111;text-decoration:none;font-weight:700}
+
+    .floating-wa{position:fixed;right:18px;bottom:18px;background:linear-gradient(180deg,#25D366,#128C7E);width:60px;height:60px;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 10px 30px rgba(0,0,0,0.3);cursor:pointer}
+    .floating-wa img{width:34px;height:34px}
+
+    /* Modal */
+    .modal-backdrop{position:fixed;inset:0;background:rgba(0,0,0,0.6);display:none;align-items:center;justify-content:center;padding:20px}
+    .modal{background:#fff;color:#111;border-radius:10px;max-width:900px;width:100%;display:flex;gap:16px;overflow:hidden}
+    .modal .left{flex:1;padding:18px}
+    .modal .right{width:320px;background:#fafafa;padding:18px}
+    .close-btn{background:#eee;border-radius:6px;padding:6px 8px;cursor:pointer}
+
+    /* Admin */
+    .admin-panel{position:fixed;left:18px;bottom:18px;background:#111;color:#fff;padding:12px;border-radius:10px;box-shadow:0 6px 18px rgba(0,0,0,0.45)}
+    .admin-panel button{margin-top:8px}
+
+    footer{padding:28px 0;margin-top:24px;text-align:center;color:#777}
+
+    @media (max-width:900px){.layout{grid-template-columns:1fr}.hero .right{display:none}.aside-section{display:none}}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <div class="topbar">
+        <div class="brand">
+          <img src="logoDK.png" alt="logo" style="height:48px;border-radius:6px;object-fit:cover;margin-right:8px">
+          <div>
+            <h1>DuniaKomputerTulis.id</h1>
+            <div style="font-size:12px;color:#ddd">Laptop &amp; Desktop — Katalog Online</div>
+          </div>
+        </div>
+        <div class="search-wrap">
+          <input id="search" class="search" placeholder="Cari model, spesifikasi, atau harga...">
+          <button id="searchBtn" class="btn">Cari</button>
+        </div>
+      </div>
+
+      <div class="hero">
+        <div class="left hero-card">
+          <h2>Promo &amp; Katalog Terbaru</h2>
+          <p>Promo Tahun Baru 2026 — perlihatkan produk unggulan dan kategori brand di bawah.</p>
+          <div style="margin-top:12px;display:flex;gap:10px;flex-wrap:wrap">
+            <div class="brand-chip" data-brand="all">Semua Brand</div>
+            <div class="brand-chip" data-brand="MSI">ASUS</div>
+            <div class="brand-chip" data-brand="MSI">Lenovo</div>
+            <div class="brand-chip" data-brand="MSI">Apple</div>
+            <div class="brand-chip" data-brand="ASUS">MSI</div>
+            <div class="brand-chip" data-brand="Lenovo">DEEL</div>
+            <div class="brand-chip" data-brand="Acer">Acer</div>
+            <div class="brand-chip" data-brand="MSI">HP</div>
+            <div class="brand-chip" data-brand="MSI">ZYREX</div>
+            <div class="brand-chip" data-brand="MSI">AXIO</div>
+          </div>
+        </div>
+        <div class="right">
+          <img src="/mnt/data/Screenshot 2025-11-25 233405.png" alt="hero" style="width:100%;border-radius:12px;object-fit:cover">
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="nav-brands" id="brandNav"><div class="brand-chip" data-brand="all">Semua Brand</div><div class="brand-chip" data-brand="all">Semua Brand</div><div class="brand-chip active" data-brand="MSI">MSI</div><div class="brand-chip" data-brand="ASUS">ASUS</div><div class="brand-chip" data-brand="Lenovo">Lenovo</div></div>
+    <div class="layout">
+      <aside>
+        <div class="aside-section">
+          <h4>Filter Harga</h4>
+          <div class="filter-item"><span>Di bawah 5 juta</span><span><input type="radio" name="price" value="&lt;5000000"></span></div>
+          <div class="filter-item"><span>Di bawah 10 juta</span><span><input type="radio" name="price" value="&lt;10000000"></span></div>
+          <div class="filter-item"><span>10 - 20 juta</span><span><input type="radio" name="price" value="10000000-20000000"></span></div>
+          <div class="filter-item"><span>Di atas 20 juta</span><span><input type="radio" name="price" value="&gt;20000000"></span></div>
+          <div class="filter-item"><span>Reset</span><span><button id="resetFilters">Reset</button></span></div>
+        </div>
+
+        <div class="aside-section">
+          <h4>Contact Person</h4>
+          <p>Hub via WhatsApp untuk order cepat:</p>
+          <p id="cp-name" style="font-weight:700">Nama: Mimin DK</p>
+          <p id="cp-phone">WA: +62 81991122334</p>
+          <a id="wa-link" class="btn" href="https://wa.me/6281991122334?text=Halo%2C%20saya%20ingin%20menanyakan%20produk%20di%20katalog." target="_blank">Chat WA Sekarang</a>
+        </div>
+
+        <div class="aside-section">
+          <h4>Administrasi</h4>
+          <small>Panel admin untuk mengelola katalog disimpan di browser Anda.</small>
+          <div style="margin-top:8px">
+            <button id="openAdmin" class="btn" style="background:#333;color:#fff">Buka Admin</button>
+          </div>
+        </div>
+      </aside>
+
+      <section>
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
+          <h3 style="margin:0">Daftar Produk</h3>
+          <div style="color:#666">Penjualan: <strong id="salesCount">10 / bulan</strong></div>
+        </div>
+
+        <div class="grid" id="productGrid"><div class="card">
+          <img src="/mnt/data/Screenshot 2025-11-25 233342.png" alt="MSI Thin 15 A12">
+          <div class="card-body">
+            <h4 class="title">MSI Thin 15 A12</h4>
+            <div class="price">Rp 14.990.000</div>
+            <div class="specs">Laptop gaming tipis, RTX onboard</div>
+            <div style="margin-top:8px;display:flex;gap:8px;align-items:center">
+              <a href="#" class="btn" data-id="1" data-action="detail">Lihat</a>
+              <a href="https://wa.me/6281991122334?text=Halo%2C%20saya%20tertarik%20dengan%20MSI%20Thin%2015%20A12%20(kode%3A1)" target="_blank" class="btn" style="background:#25D366;color:#fff">Order WA</a>
+            </div>
+          </div>
+        </div></div>
+      </section>
+    </div>
+
+    <footer>
+      <div>© <span id="year">2025</span> DuniaKomputerTulis.id — Katalog &amp; Penjualan Online</div>
+    </footer>
+  </main>
+
+  <!-- floating WA -->
+  <div class="floating-wa" id="floatingWA" title="Hubungi via WhatsApp">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WA">
+  </div>
+
+  <!-- Modal detail -->
+  <div class="modal-backdrop" id="modalBackdrop" style="display: flex;">
+    <div class="modal">
+      <div class="left">
+        <img id="modalImage" src="/mnt/data/Screenshot 2025-11-25 233342.png" alt="product" style="width:100%;height:320px;object-fit:cover">
+        <h3 id="modalTitle">MSI Thin 15 A12</h3>
+        <p id="modalShort" style="color:#666;margin-top:6px">Laptop gaming tipis, RTX onboard</p>
+        <div style="margin-top:8px"><strong>Spesifikasi:</strong></div>
+        <pre id="modalSpecs" style="white-space:pre-wrap;background:#f8f8f8;padding:10px;border-radius:6px">CPU: Intel i7<br>RAM: 16GB<br>Storage: 1TB SSD<br>Display: 15.6" 144Hz</pre>
+      </div>
+      <div class="right">
+        <div style="display:flex;justify-content:space-between;align-items:center">
+          <div style="font-size:12px;color:#666">Harga</div>
+          <div class="close-btn" id="closeModal">Tutup</div>
+        </div>
+        <div style="font-size:20px;margin-top:18px;color:var(--accent);font-weight:800" id="modalPrice">Rp 14.990.000</div>
+        <div style="margin-top:14px">
+          <a id="modalWA" class="btn" href="https://wa.me/6281991122334?text=Halo%2C%20saya%20mau%20pesan%20MSI%20Thin%2015%20A12%20(kode%3A1)" target="_blank">Order via WA</a>
+        </div>
+        <div style="margin-top:18px;color:#666;font-size:13px">Brand: <span id="modalBrand">MSI</span></div>
+        <div style="margin-top:6px;color:#666;font-size:13px">Stok: <span id="modalStock">5</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Admin panel (modal-like) -->
+  <div class="admin-panel" id="adminPanel" style="display:none">
+    <div><strong>Admin Panel</strong></div>
+    <div style="margin-top:8px">
+      <button id="addProductBtn" class="btn" style="background:#2b2b2b">Tambah Produk</button>
+    </div>
+    <div style="margin-top:8px">
+      <button id="exportBtn" class="btn" style="background:#2b2b2b">Export JSON</button>
+    </div>
+    <div style="margin-top:8px">
+      <input id="importFile" type="file" accept="application/json">
+    </div>
+    <div style="margin-top:8px">
+      <button id="closeAdminBtn" class="btn" style="background:#444">Tutup</button>
+    </div>
+  </div>
+
+  <!-- Admin add/edit form (hidden) -->
+  <div class="modal-backdrop" id="adminBackdrop" style="display:none">
+    <div class="modal" style="max-width:720px;flex-direction:column">
+      <div style="padding:18px;width:100%">
+        <h3 id="adminTitle">Tambah Produk</h3>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px">
+          <input id="p-name" placeholder="Nama produk">
+          <input id="p-brand" placeholder="Brand">
+          <input id="p-price" placeholder="Harga (angka tanpa pemisah)" type="number">
+          <input id="p-stock" placeholder="Stok" type="number">
+          <input id="p-image" placeholder="URL gambar (bisa file host)">
+          <input id="p-short" placeholder="Deskripsi singkat">
+        </div>
+        <textarea id="p-specs" placeholder="Spesifikasi (pisahkan baris)" style="width:100%;height:160px;margin-top:10px"></textarea>
+
+        <div style="display:flex;gap:8px;margin-top:10px;justify-content:flex-end">
+          <button id="saveProduct" class="btn">Simpan</button>
+          <button id="cancelProduct" class="btn" style="background:#ddd;color:#111">Batal</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // ========== CUSTOMIZE THIS ===========
+    const WA_NUMBER = '6281991122334'; // change to your WA number (no +)
+    const CP_NAME = 'Mimin DK';
+    const INITIAL_SALES = 10; // display sales per month
+    // ======================================
+
+    document.getElementById('year').innerText = new Date().getFullYear();
+    document.getElementById('salesCount').innerText = INITIAL_SALES + ' / bulan';
+     
+    // set contact info
+    document.getElementById('cp-name').innerText = 'Nama: ' + CP_NAME;
+    document.getElementById('cp-phone').innerText = 'WA: +' + WA_NUMBER.replace(/(\d{2})(\d+)/,'$1 $2');
+    const waHref = (text)=>`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(text)}`;
+    document.getElementById('wa-link').href = waHref('Halo, saya ingin menanyakan produk di katalog.');
+    document.getElementById('floatingWA').addEventListener('click',()=>window.open(waHref('Halo, saya tertarik beli...'), '_blank'));
+
+    // modal controls
+    const modalBackdrop = document.getElementById('modalBackdrop');
+    const adminBackdrop = document.getElementById('adminBackdrop');
+    document.getElementById('closeModal').addEventListener('click',()=>modalBackdrop.style.display='none');
+    modalBackdrop.addEventListener('click',(e)=>{ if(e.target===modalBackdrop) modalBackdrop.style.display='none' });
+
+    // sample starter products (will only be set if localStorage empty)
+    const SAMPLE = [
+      {id:1,brand:'MSI',name:'MSI Thin 15 A12',price:14990000,stock:5,image:'/mnt/data/Screenshot 2025-11-25 233342.png',short:'Laptop gaming tipis, RTX onboard',specs:'CPU: Intel i7\nRAM: 16GB\nStorage: 1TB SSD\nDisplay: 15.6" 144Hz'},
+      {id:2,brand:'ASUS',name:'ASUS Zenbook X',price:12990000,stock:8,image:'https://via.placeholder.com/600x400?text=ASUS+Zenbook',short:'Ringan & stylish',specs:'CPU: AMD Ryzen 7\nRAM: 16GB\nStorage: 512GB SSD\nDisplay: 14" OLED'},
+      {id:3,brand:'ROG',name:'ASUS ROG STRIX G G815 2',price:38800000,stock:8,image:'ROG-STRIX-G-G815-2.png',short:'Ringan & stylish',specs:'CPU: Intel Core Ultra 9 275HX\nRAM: 32GB\nStorage: 1000GB SSD\nVGA: RTX 5060\nDisplay: 18" WUXGA'},
+      {id:4,brand:'Lenovo',name:'Lenovo Legion 5',price:18990000,stock:3,image:'https://via.placeholder.com/600x400?text=Lenovo+Legion',short:'Performa gaming terbaik',specs:'CPU: Ryzen 9\nGPU: RTX 4070\nRAM: 32GB\nStorage: 1TB'}
+    ];
+
+    // persistence
+    const STORAGE_KEY = 'catalog_products_v1';
+    function loadProducts(){
+      const raw = localStorage.getItem(STORAGE_KEY);
+      if(!raw){ localStorage.setItem(STORAGE_KEY, JSON.stringify(SAMPLE)); return SAMPLE.slice(); }
+      try{ return JSON.parse(raw); }catch(e){ console.error('Invalid JSON in storage',e); return SAMPLE.slice(); }
+    }
+    function saveProducts(arr){ localStorage.setItem(STORAGE_KEY, JSON.stringify(arr)); }
+
+    let products = loadProducts();
+
+    // render brands nav
+    function renderBrandNav(){
+      const brands = ['all',...new Set(products.map(p=>p.brand))];
+      const nav = document.getElementById('brandNav'); nav.innerHTML='';
+      brands.forEach(b=>{
+        const el = document.createElement('div'); el.className='brand-chip '+(b==='all'?'active':''); el.dataset.brand=b; el.innerText=b==='all'?'Semua Brand':b;
+        el.addEventListener('click',()=>{ document.querySelectorAll('.brand-chip').forEach(x=>x.classList.remove('active')); el.classList.add('active'); filterAndRender(); });
+        nav.appendChild(el);
+      });
+    }
+
+    function formatRupiah(n){ return 'Rp ' + Number(n).toLocaleString('id-ID'); }
+
+    // render product grid
+    function renderGrid(list){
+      const grid = document.getElementById('productGrid'); grid.innerHTML='';
+      list.forEach(p=>{
+        const card = document.createElement('div'); card.className='card';
+        card.innerHTML = `
+          <img src="${p.image||'https://via.placeholder.com/600x400?text=No+Image'}" alt="${p.name}">
+          <div class="card-body">
+            <h4 class="title">${p.name}</h4>
+            <div class="price">${formatRupiah(p.price)}</div>
+            <div class="specs">${p.short||''}</div>
+            <div style="margin-top:8px;display:flex;gap:8px;align-items:center">
+              <a href="#" class="btn" data-id="${p.id}" data-action="detail">Lihat</a>
+              <a href="${waHref('Halo, saya tertarik dengan '+p.name+' (kode:'+p.id+')') }" target="_blank" class="btn" style="background:#25D366;color:#fff">Order WA</a>
+            </div>
+          </div>
+        `;
+        grid.appendChild(card);
+      });
+
+      // attach detail listeners
+      document.querySelectorAll('[data-action="detail"]').forEach(el=>el.addEventListener('click',ev=>{
+        ev.preventDefault(); const id = Number(el.dataset.id); openDetail(id);
+      }));
+    }
+
+    function openDetail(id){
+      const p = products.find(x=>x.id===id); if(!p) return;
+      document.getElementById('modalImage').src = p.image||'https://via.placeholder.com/900x600?text=No+Image';
+      document.getElementById('modalTitle').innerText = p.name;
+      document.getElementById('modalShort').innerText = p.short||'';
+      document.getElementById('modalSpecs').innerText = p.specs||'';
+      document.getElementById('modalPrice').innerText = formatRupiah(p.price);
+      document.getElementById('modalBrand').innerText = p.brand;
+      document.getElementById('modalStock').innerText = p.stock;
+      document.getElementById('modalWA').href = waHref('Halo, saya mau pesan '+p.name+' (kode:'+p.id+')');
+      modalBackdrop.style.display='flex';
+    }
+
+    // filtering
+    function filterAndRender(){
+      const activeBrandEl = document.querySelector('.brand-chip.active');
+      const brand = activeBrandEl?activeBrandEl.dataset.brand:'all';
+      const kw = document.getElementById('search').value.trim().toLowerCase();
+      const priceRadio = document.querySelector('input[name="price"]:checked');
+      let list = products.slice();
+      if(brand && brand!=='all') list = list.filter(p=>p.brand.toLowerCase()===brand.toLowerCase());
+      if(kw) list = list.filter(p=> (p.name+ ' '+p.short + ' '+p.brand).toLowerCase().includes(kw));
+      if(priceRadio){ const v = priceRadio.value;
+        if(v.startsWith('<')) list = list.filter(p=> p.price < Number(v.slice(1)));
+        else if(v.startsWith('>')) list = list.filter(p=> p.price > Number(v.slice(1)));
+        else if(v.includes('-')){ const [a,b]=v.split('-').map(Number); list = list.filter(p=> p.price>=a && p.price<=b); }
+      }
+      renderGrid(list);
+    }
+
+    document.getElementById('searchBtn').addEventListener('click',filterAndRender);
+    document.getElementById('search').addEventListener('keydown',e=>{ if(e.key==='Enter') filterAndRender(); });
+    document.getElementById('resetFilters').addEventListener('click',()=>{ document.querySelectorAll('input[name="price"]').forEach(i=>i.checked=false); filterAndRender(); });
+
+    // admin interactions
+    document.getElementById('openAdmin').addEventListener('click',()=>{ document.getElementById('adminPanel').style.display='block'; });
+    document.getElementById('closeAdminBtn').addEventListener('click',()=>{ document.getElementById('adminPanel').style.display='none'; });
+
+    document.getElementById('addProductBtn').addEventListener('click',()=>{
+      document.getElementById('adminTitle').innerText='Tambah Produk';
+      document.getElementById('p-name').value=''; document.getElementById('p-brand').value=''; document.getElementById('p-price').value=''; document.getElementById('p-stock').value=''; document.getElementById('p-image').value=''; document.getElementById('p-short').value=''; document.getElementById('p-specs').value='';
+      adminBackdrop.style.display='flex';
+    });
+    document.getElementById('cancelProduct').addEventListener('click',()=>{ adminBackdrop.style.display='none'; });
+
+    let editingId = null;
+    document.getElementById('saveProduct').addEventListener('click',()=>{
+      const name = document.getElementById('p-name').value.trim();
+      const brand = document.getElementById('p-brand').value.trim();
+      const price = Number(document.getElementById('p-price').value)||0;
+      const stock = Number(document.getElementById('p-stock').value)||0;
+      const image = document.getElementById('p-image').value.trim();
+      const short = document.getElementById('p-short').value.trim();
+      const specs = document.getElementById('p-specs').value.trim();
+      if(!name || !brand){ alert('Isi nama dan brand'); return; }
+      if(editingId){
+        const idx = products.findIndex(x=>x.id===editingId);
+        products[idx] = {...products[idx],name,brand,price,stock,image,short,specs};
+        editingId = null;
+      } else {
+        const id = products.length?Math.max(...products.map(x=>x.id))+1:1;
+        products.push({id,brand,name,price,stock,image,short,specs});
+      }
+      saveProducts(products);
+      adminBackdrop.style.display='none';
+      document.getElementById('adminPanel').style.display='none';
+      renderBrandNav(); filterAndRender();
+    });
+
+    // export/import
+    document.getElementById('exportBtn').addEventListener('click',()=>{
+      const dataStr = JSON.stringify(products,null,2); const blob = new Blob([dataStr],{type:'application/json'}); const url = URL.createObjectURL(blob);
+      const a = document.createElement('a'); a.href=url; a.download='katalog_products.json'; document.body.appendChild(a); a.click(); a.remove(); URL.revokeObjectURL(url);
+    });
+    document.getElementById('importFile').addEventListener('change',e=>{
+      const f = e.target.files[0]; if(!f) return; const reader = new FileReader(); reader.onload = ()=>{
+        try{ const arr = JSON.parse(reader.result); if(!Array.isArray(arr)) throw 0; products = arr; saveProducts(products); renderBrandNav(); filterAndRender(); alert('Import sukses'); }catch(err){ alert('File tidak valid'); }
+      }; reader.readAsText(f);
+    });
+
+    // initial render
+    renderBrandNav(); filterAndRender();
+
+  </script>
+</body>
+</html>
