@@ -335,11 +335,11 @@
           </div>
         `;
         grid.appendChild(card);
-        const btnDetail=card.querySelector('[data-action="detail"]');
-        btnDetail.addEventListener('click',ev=>{
-          ev.preventDefault();
-          openDetail(p.id);
       });
+      // attach detail listeners
+      document.querySelectorAll('[data-action="detail"]').forEach(el=>el.addEventListener('click',ev=>{
+        ev.preventDefault(); const id = Number(el.dataset.id); openDetail(id);
+      }));
     }
 
     function openDetail(id){
