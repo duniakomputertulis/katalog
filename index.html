@@ -108,14 +108,16 @@ Note: If you host this on a webserver, you can later point image URLs to your se
       <div class="hero">
         <div class="left hero-card">
           <h2>Promo & Katalog Terbaru</h2>
-          <p>Promo Tahun Baru 2026 — perlihatkan produk unggulan dan kategori brand di bawah.</p>
+          <p>
+             "Promo Tahun Baru 2026 — perlihatkan produk unggulan dan kategori brand di bawah."
+          </p>
           <div style="margin-top:12px;display:flex;gap:10px;flex-wrap:wrap">
             <div class="brand-chip active" data-brand="all">Semua Brand</div>
             <div class="brand-chip" data-brand="ASUS">ASUS</div>
             <div class="brand-chip" data-brand="Lenovo">Lenovo</div>
             <div class="brand-chip" data-brand="Apple">Apple</div>
             <div class="brand-chip" data-brand="MSI">MSI</div>
-            <div class="brand-chip" data-brand="DEEL">DEEL</div>
+            <div class="brand-chip" data-brand="DELL">DELL</div>
             <div class="brand-chip" data-brand="Acer">Acer</div>
             <div class="brand-chip" data-brand="HP">HP</div>
             <div class="brand-chip" data-brand="ZYREX">ZYREX</div>
@@ -140,13 +142,37 @@ Note: If you host this on a webserver, you can later point image URLs to your se
       <aside>
         <div class="aside-section">
           <h4>Filter Harga</h4>
-          <div class="filter-item"><span>Di bawah 5 juta</span><span><input type="radio" name="price" value="<5000000"></span></div>
-          <div class="filter-item"><span>Di bawah 10 juta</span><span><input type="radio" name="price" value="<10000000"></span></div>
-          <div class="filter-item"><span>10 - 20 juta</span><span><input type="radio" name="price" value="10000000-20000000"></span></div>
-          <div class="filter-item"><span>Di atas 20 juta</span><span><input type="radio" name="price" value=">20000000"></span></div>
-          <div class="filter-item"><span>Reset</span><span><button id="resetFilters">Reset</button></span></div>
+          <div class="filter-item">
+             <span>Di bawah 5 juta</span>
+             <span>
+                <input type="radio" name="price" value="<5000000">
+             </span>
+          </div>
+          <div class="filter-item">
+             <span>Di bawah 10 juta</span>
+             <span>
+                <input type="radio" name="price" value="<10000000">
+             </span>
+          </div>
+          <div class="filter-item">
+             <span>10 - 20 juta</span>
+             <span>
+                <input type="radio" name="price" value="10000000-20000000">
+             </span>
+          </div>
+          <div class="filter-item">
+             <span>Di atas 20 juta</span>
+             <span>
+                <input type="radio" name="price" value=">20000000">
+             </span>
+          </div>
+          <div class="filter-item">
+             <span>Reset</span>
+             <span>
+                <button id="resetFilters">Reset</button>
+             </span>
+          </div>
         </div>
-
         <div class="aside-section">
           <h4>Contact Person</h4>
           <p>Hub via WhatsApp untuk order cepat:</p>
@@ -154,7 +180,6 @@ Note: If you host this on a webserver, you can later point image URLs to your se
           <p id="cp-phone">WA: +62 819-9112-2334</p>
           <a id="wa-link" class="btn" href="#" target="_blank">Chat WA Sekarang</a>
         </div>
-
         <div class="aside-section">
           <h4>Administrasi</h4>
           <small>Panel admin untuk mengelola katalog disimpan di browser Anda.</small>
